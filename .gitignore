@@ -1,11 +1,25 @@
 # === Systemowe ===
 .DS_Store
 Thumbs.db
+ehthumbs.db
+Icon?
+desktop.ini
 
 # === IDE / Edytory ===
 .idea/
-.vscode/
 *.iml
+.vscode/
+*.sublime-workspace
+*.sublime-project
+*.code-workspace
+*.sw?
+*.bak
+*.tmp
+
+# === JetBrains IDEs (PyCharm, CLion, IntelliJ, GoLand, etc.) ===
+*.iws
+*.ipr
+out/
 
 # === Node.js / npm / yarn / pnpm ===
 node_modules/
@@ -46,17 +60,6 @@ logs/
 .svelte-kit/
 storybook-static/
 *.tsbuildinfo
-
-# === Misc ===
-*.swp
-*.swo
-*.bak
-*.tmp
-
-# === OS cache ===
-ehthumbs.db
-Icon?
-desktop.ini
 
 # === Monorepo / Workspaces ===
 packages/**/node_modules/
