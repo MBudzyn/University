@@ -1,0 +1,173 @@
+#lang racket
+
+; słowniki
+; reprezentacja: listy postaci
+; (list (elem k1 v1) (elem k2 v2) ... (elem kn vn))
+
+; zmiana względem wykładu:
+; struktura elem częścią interfejsu
+
+(define-struct elem (key val) #:transparent)
+
+(define-struct dict (list))
+
+(define empty-dict (dict '()))
+
+(define (dict-remove k d)
+  (dict (filter (lambda (elt)
+                  (not (equal? k (elem-key elt))))
+                (dict-list d))))
+
+(define (dict-insert elt d)
+  (dict (cons elt
+              (dict-list (dict-remove (elem-key elt) d)))))
+
+(define (dict-find k d)
+  (define (f xs)
+    (cond [(null? xs) #f]
+          [(equal? k (elem-key (car xs)))
+           (car xs)]
+          [else (f (cdr xs))]))
+  (f (dict-list d)))
+
+(define (dict-find-else k e d)
+  (define elt (dict-find k d))
+  (if elt
+      (elem-val elt)
+      e))
+
+(define (dict-find-or-error k d)
+  (define elt (dict-find k d))
+  (if elt
+      (elem-val elt)
+      (error "Not found" k)))
+  
+(define (dict->list d)
+  (dict-list d))
+
+; kolejki priorytetowe
+; reprezentacja: listy postaci
+; (list (ord v1 p1) (ord v2 p2) ... (ord vn pn))
+; p1 <= p2 <= ... <= pn
+
+(define-struct ord (val priority) #:transparent)
+
+(define-struct prio-queue (list))
+
+(define empty-pq (prio-queue '()))
+
+(define (pq-insert elt h)
+  (define (ins xs)
+    (cond [(null? xs) (list elt)]
+          [(< (ord-priority elt)
+              (ord-priority (car xs)))
+           (cons elt xs)]
+          [else (cons (car xs) (ins (cdr xs)))]))
+  (prio-queue (ins (prio-queue-list h))))
+
+(define (pq-pop h)
+  (prio-queue (cdr (prio-queue-list h))))
+
+(define (pq-min h)
+  (car (prio-queue-list h)))
+
+(define (pq-empty? h)
+  (null? (prio-queue-list h)))
+
+; częstości wystąpień
+
+(define (make-frequency-dict xs)
+  (define (it xs d)
+    (if (null? xs) d
+        (it (cdr xs)
+            (dict-insert
+             (elem (car xs)
+                   (+ 1 (dict-find-else (car xs) 0 d)))
+             d))))
+  (it xs empty-dict))
+
+(define (string-frequency-dict str)
+  (make-frequency-dict (string->list str)))
+
+(define example-string "konstantynopolitańczykowianeczka")
+
+(define example-frequency-dict
+  (string-frequency-dict example-string))
+
+; drzewa kodowe
+
+(define-struct htnode (l r) #:transparent)
+(define-struct htleaf (c) #:transparent)
+
+(define (make-code-tree xs)
+  (define (pq-insert-leaf p h)
+    (pq-insert (ord (htleaf (elem-key p)) (elem-val p)) h))
+  (define (initial-pq xs)
+    (foldl pq-insert-leaf empty-pq xs))
+  (define (ord-htnode e1 e2)
+    (ord (htnode (ord-val e1) (ord-val e2))
+         (+ (ord-priority e1) (ord-priority e2))))
+  (define (algo h)
+    (let ([e1 (pq-min h)]
+          [h1 (pq-pop h)])
+      (if (pq-empty? h1)
+          (ord-val e1)
+          (let ([e2 (pq-min h1)]
+                [h2 (pq-pop h1)])
+            (algo (pq-insert (ord-htnode e1 e2) h2))))))
+  (algo (initial-pq xs)))
+
+(define example-code-tree
+  (make-code-tree (dict->list example-frequency-dict)))
+
+; słownik drzewa kodowego
+
+(define (code-tree->dict t)
+  (define (aux t rcpref d)
+    (if (htleaf? t)
+        (dict-insert (elem (htleaf-c t) (reverse rcpref)) d)
+        (aux (htnode-r t)
+             (cons 1 rcpref)
+             (aux (htnode-l t)
+                  (cons 0 rcpref)
+                  d))))
+  (aux t '() empty-dict))
+
+(define example-code-dict
+  (code-tree->dict example-code-tree))
+
+; kodowanie
+
+(define (encode xs d)
+  (foldr append null
+         (map (lambda (x) (dict-find-or-error x d)) xs)))
+
+(define (encode-string str d)
+  (encode (string->list str) d))
+
+(define example-encoded-string
+  (encode-string example-string example-code-dict))
+
+; dekodowanie
+
+(define (decode bits t)
+  (define (start bits)
+    (if (null? bits)
+        '()
+        (walk bits t)))
+  (define (walk bits cur-t)
+    (cond [(htleaf? cur-t)
+           (cons (htleaf-c cur-t) (start bits))]
+          [(null? bits)
+           (error "Incomplete code")]
+          [(= 0 (car bits))
+           (walk (cdr bits) (htnode-l cur-t))]
+          [(= 1 (car bits))
+           (walk (cdr bits) (htnode-r cur-t))]))
+  (start bits))
+
+(define (decode-string bits t)
+  (list->string (decode bits t)))
+
+(define example-decoded-string
+  (decode-string example-encoded-string example-code-tree))

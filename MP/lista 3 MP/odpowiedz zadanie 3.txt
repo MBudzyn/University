@@ -1,0 +1,9 @@
+(( lambda ( x y ) (+ x (* x y ) ) ) 1 2) # zwróci 3  zadeklaruje funkcje lambda dwuargumentowa ktora dodaje pierwsza wartosc oraz iloczyn  pierwszej i drugie wiec 1 + 2 = 3
+
+(( lambda ( x ) x ) ( lambda ( x ) x ) ) zadeklaruje funkcje lambda ktora przyjmuje argument i go zwraca a do argumentu x zostanie podstawiona ta sama funkcja ktora przyjmuje argument i go zwraca wiec w odpowiedz zostanie zwrocana funkcja ktora przyjmuje jakis argument i go zwraca 
+
+((lambda (x) (x x)) (lambda (x) x)) funkcja pierwsza zwraca dwa razy otrzymany argument czyli funkcje (lambda (x) x) (lambda (x) x)
+w ten sposob otrzymamy wyrazenie z poprzedniego pkt ktore zwraca funkcje zwracajaca otrzymany arguemnt
+
+(( lambda ( x ) ( x x ) ) ( lambda ( x ) ( x x ) ) ) nieskonczona rekurencja nie zwracajaca zadnego wyniku
+

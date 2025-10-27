@@ -1,0 +1,50 @@
+( define ( apply f x ) ( f x ) ) # przyjmuje dwa argumenty jeden funkcje drugi dowolny i zwraca funkcje do ktorej aplikujemy ten argument
+
+(A->B , A ) -> B
+
+( define ( compose f g ) ( lambda ( x ) ( f ( g x ) ) ) ) # zlozenie funkcji przyjmuje jako argument 
+
+(('z -> 'w) ('y -> 'z) -> ('y -> 'w))
+
+
+( define ( flip f ) ( lambda ( x y ) ( f y x ) ) )
+
+ (('a 'b -> 'c) -> ('b 'a -> 'c))
+
+( define ( curry f ) ( lambda ( x ) ( lambda ( y ) ( f x y ) ) ) )
+
+(('a 'b -> 'c) -> ('a -> ('b -> 'c)))
+
+------------------------------------------------------------------------------
+
+( curry compose ) podstawiamy do curry pod a = 'z -> 'w , b = 'y -> 'z,  c = 'y -> 'w i otrzymujemy (('z -> 'w) -> ( ('y -> 'z) -> ('y -> 'w)))
+
+--------------------------------------------------------------------------------
+
+(( curry compose ) ( curry compose ) )
+
+ ((curry compose) (curry compose))
+wiemy, że (curry compose) ma typ (('_a -> '_b) -> (('_c -> '_a) -> ('_c -> '_b)))
+=
+(('_x -> '_y) -> (('_z -> '_x) -> ('_z -> '_y)))
+i zaaplikujmy to:
+pierwszy argument do (curry compose) ma typ ('_a -> '_b)  podstawiamy (('_x -> '_y) -> (('_z -> '_x) -> ('_z -> '_y))), więc mamy:
+'_a = ('_x -> '_y)
+'_b = (('_z -> '_x) -> ('_z -> '_y))
+patrzymy na typ zwracany (('_c -> '_a) -> ('_c -> '_b)), podstawiamy zmienne:
+(('_c -> ('_x -> '_y)) -> ('_c -> (('_z -> '_x) -> ('_z -> '_y))))
+i to się zgadza z tym co mówi doktorek:
+> ((curry compose) (curry compose))
+- (('_a -> ('_b -> '_c)) -> ('_a -> (('_d -> '_b) -> ('_d -> '_c))))
+
+------------------------------------------------------------------------------------
+
+(( curry compose ) ( curry apply ) ) aby utworzyc carry apply trzeba przerzucic cale apply do dziedziny curry potem caly wynik trzeba przerzucic do dziedziny (curry compose)
+
+i tak zpozostalymi przykladami
+
+
+
+
+
+

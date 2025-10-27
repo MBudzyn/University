@@ -1,0 +1,129 @@
+#lang racket
+(require rackunit)
+
+;----------------------
+(let ([x 5])
+    (let ([x 2]
+          [y x]) ; do przypisujemy wartosc 5 poniewaz x o wartosci 2 nie jest widoczny w tym lecie
+      (list y x))) ; ale w wyrazeniu juz  jest co w wyniku da 5 2
+;----------------------
+(cons 1 2)
+'(1 . 2)
+
+(cons 1 '())
+'(1)
+
+(cons 1 (list 2 3 4))
+'(1 2 3 4)
+
+(cons (list 1 2 3) (list 4 5 6))
+'((1 2 3) 4 5 6)
+
+(cons (list 1 2 3) 4)
+'((1 2 3) . 4)
+;-----------------------------------
+(foldl cons '() '(1 2 3 4))
+'(4 3 2 1)
+
+(foldl + 0 '(1 2 3 4)) ; 1+0 -> 2 + 1 -> 3 + 3 -> 4 + 6 najpierw element listy potem "pojemnik"(wynik)
+10
+
+(foldl (lambda (x y) (- y x)) 0 '(1 2 3 4))
+-10
+
+(define (insert element lista)
+  (cond
+     [(equal? lista null) (cons element null)]
+     [(< element (car lista)) (cons element lista)]
+     [else (cons (car lista) (insert element (cdr lista)))]))
+
+(define (insert-sort lista1 lista2)
+  (cond
+    [(equal? lista2 null) lista1]
+    [(insert-sort (insert (car lista2) lista1) (cdr lista2))]))
+
+(insert-sort (list 1 3 5 5 7 9) (list 1 4 2 1 4  5 2 1))
+
+
+(define (mniejsze_5 lista)
+  (filter (lambda (x) (if (< x 5) #t #f)) lista))
+
+(define ( kwadrat liczba)
+  (* liczba liczba))
+
+(define (kwadraty lista)
+  (map kwadrat lista))
+
+(define (suma_mniejszych_5 lista)
+  (foldr (lambda (x y) (if (< x 5) (+ x y) y)) 0 lista))
+
+(suma_mniejszych_5 (list 1 2 3 9 5 4 0 3 4 2 9))
+
+(define-struct leaf () #:transparent)
+(define-struct node (l e r) #:transparent)
+
+
+(define (find_el tree x)
+  (cond
+    [(leaf? tree) #f]
+    [(node? tree)
+     (cond
+       [(= x (node-e tree)) #t]
+       [(< x (node-e tree)) (find_el (node-l tree) x)]
+       [else (find_el (node-r tree) x)])]))
+
+
+(define example-tree (node (node (leaf) 1 (leaf))
+                           2
+                           (node (node (leaf) 3 (leaf))
+                                 4
+                                 (node (leaf) 5 (leaf)))))
+
+(find_el example-tree 6)
+     
+ #|           
+(define/contract (funkcja list1 list2)
+  (parametric->/c [a b c] (-> (listof a) (listof b) (listof c)))
+  (let ((suma (foldl + 0 list1)))
+    (map (lambda (x) (+ suma x)) list2)))
+|#
+
+(define/contract (map f xs)
+  (parametric->/c [a b] (-> (-> a b) (listof a) (listof b)))
+  (match xs
+    ['() null]
+    [(cons x xs) (cons (f x) (map f xs))]))
+    
+
+
+(map kwadrat (list 2 3 4))
+
+(define (my-foldl function acc list)
+  (if (null? list)
+      acc
+      (my-foldl function (function acc (car list)) (cdr list))))
+
+(my-foldl + 0 '())
+
+(define (split lst)
+  (define len (length lst))
+  (define mid (quotient len 2))
+  (if (odd? len)
+      (cons (take lst (add1 mid)) (drop lst (add1 mid)))
+      (cons (take lst mid) (drop lst mid))))
+
+(car (split (list 1 2 3 4 5 3 2 0)))
+
+(cdr (split (list 1 2 3 4 5 3 2 0)))
+
+(define (return_sum lista)
+  (filter (lambda (x) (> x 3)) lista))
+(return_sum (list 1 2 3 4 5 6 2 1 4 0 9))
+
+(cons '() 5)
+(cons (list 3) (list 3 4))
+(build-list 9 (lambda (x) (- 0 x)))
+
+(for-each (lambda (x) (display (+ x 3))) (list 1 2 3 4))
+
+

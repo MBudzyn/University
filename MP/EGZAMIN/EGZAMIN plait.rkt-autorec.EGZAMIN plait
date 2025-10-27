@@ -1,0 +1,28 @@
+#lang plait
+
+
+(define-type (Tree 'a)
+  (leaf)
+  (node [l : (Tree 'a)] [e : 'a] [r : (Tree 'a)]))
+
+(define (find tree el)
+  (type-case (Tree 'a) tree
+    ((leaf) "nieznaleziono")
+    ((node l e r)
+       (cond
+         [(= el (fst e)) (snd e)]
+         [(< el (fst e)) (find l el)]
+         [else (find r el)]))))
+             
+
+(define example-tree
+  (node (node (leaf) (pair 1 "foo") (leaf))
+        (pair 2 "bar")
+        (node (leaf) (pair 3 "baz") (leaf))))
+
+(find example-tree 4)
+
+
+
+
+             

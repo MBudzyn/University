@@ -1,0 +1,66 @@
+#lang racket
+
+
+(define kontr (parametric->/c [A B] (-> A B A)))
+(define kontr2 ( parametric->/c [ a b c ] (-> (-> a b c ) (-> a b ) a c ) ))
+(define kontr3 ( parametric->/c [ a b c ] (-> (-> b c ) (-> a b ) (-> a c ))))
+(define kontr4 ( parametric->/c [ a ] (-> (-> (-> a a) a) a)))
+
+(define (id x) x)
+(define (zag1 x) (id x))
+(define (zag2 x) (zag1 x))
+(define (kontr4p a)
+  (lambda (f)
+    (lambda (g)
+      (f (g a)))))
+
+(define/contract (zadanie1 a b)
+  kontr
+  a)
+
+(define/contract (my-map f xs)
+  (parametric->/c [a b] (-> (-> a b) (listof a) (listof b)))
+  (match xs
+    ['()         null]
+    [(cons x xs) (cons (f x) (my-map f xs))]))
+
+(define/contract (fact n)
+  (-> natural? (and/c natural? positive?))
+  (if (= n 0)
+      1
+      (* n (fact (- n 1)))))
+
+(fact 7)
+(define/contract (zadanie2 f g h)
+  kontr2
+  (f h (g h)))
+   
+(define (f1 a b)
+  (+ a b))
+(define (f3 a)
+  (+ a 1))
+(define (f31 a)
+  (+ a 2))
+(define (f2 a)
+  (+ a 1))
+  
+(my-map f3 (list 1 2 3 4 5))
+
+(zadanie2 f1 f2 4)
+
+(zadanie1 5 4)
+
+
+
+(define swap-ctc (parametric->/c [A B] (-> A B (values B A))))
+
+ (define/contract (good-swap a b)
+    swap-ctc
+    (values b a))
+
+(good-swap 3 4)
+
+(define/contract (foo x)
+  (parametric->/c [a] (-> a a))
+  x)
+(foo 5)

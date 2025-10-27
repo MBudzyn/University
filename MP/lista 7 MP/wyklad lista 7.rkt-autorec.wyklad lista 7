@@ -1,0 +1,12 @@
+#lang plait
+
+(define-type (Tree 'a)
+  (leaf)
+  (node [l : (Tree 'a)] [elem : 'a] [r : (Tree 'a)]))
+(define (insert x t)
+  (type-case (Tree 'a) t
+    [(leaf) (node (leaf) x (leaf))]
+    [(node l y r)
+     (if ( < x y )
+         (node (insert x l) y r)
+         (node (insert y l) x r))]))

@@ -1,0 +1,1 @@
+ze wzgledu na liniowe dzialanie apenda oraz rekurencyjne dzialanie funkcji foldr zostanie utworzonych (1 + 2 + 3 + 4 + .... 10.000)/2 * 10.000 consow poniewaz 10000 razy powtorzy sie procedura ktora najpierw wstawi element na koniec listy 0 elementowej potem jedno potem dwu ... przez co zlozonosc funkcji bedzie kwadratowa utworzone zostanie 50 005 00 a wykorzystane 10000
