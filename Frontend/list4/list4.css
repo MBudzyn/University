@@ -1,0 +1,139 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #8d7d7d;
+    min-height: 100vh;
+    font-size: clamp(1.0rem, 2vw, 1.5rem);
+    margin: 1rem;
+    display: flex;
+    flex-direction: column; 
+    justify-content: flex-start; 
+    align-items: center; 
+}
+
+.header {
+    color: white;
+    text-align: center;
+    width: 100%;
+}
+
+.content {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 800px;
+    padding: 1rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column; 
+    box-sizing: border-box;
+    justify-content: center;
+}
+
+.form__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1.5rem;
+    padding: 1rem;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+.card {
+    background: rgb(236, 227, 227);
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(225, 219, 219, 0.5);
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.card--full-width {
+    grid-column: span 2;
+}
+
+@media (max-width: 700px) {
+    .form__grid {
+        grid-template-columns: 1fr;
+    }
+    .card--full-width {
+        grid-column: span 1;
+    }
+}
+
+@media (pointer: coarse) {
+    
+    input--checkbox {
+        transform: scale(1.5); 
+        margin: 0.5rem; 
+    }
+}
+
+.card--submit {
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.input {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+.input--textarea {
+    resize: vertical;
+}
+
+.input--checkbox {
+    width: 1.5em;
+    height: 1.5em;
+}
+
+.input__label {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.input__label--checkbox {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+}
+
+.button {
+    padding: 1rem;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    border-radius: 4px;
+    width: 100%;
+    text-align: center;
+}
+
+.button--primary {
+    background: #007bff;
+    color: white;
+}
+
+input:invalid {
+    border: 2px solid red;
+}
+
+input:invalid + .validation-info {
+    display: block;
+    color: red;
+    font-size: 0.8rem;
+    margin-top: 0.2rem;
+}
+
+label:has(input:invalid) {
+    color: red;
+}
+
+

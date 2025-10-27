@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Form</title>
+    <link rel="stylesheet" href="list4.css">
+</head>
+<body>
+
+<header class="header">
+    <h1 class="header__title">Contact Form</h1>
+</header>
+
+<main class="content">
+    <form class="form" method="post"> 
+        <div class="form__grid">
+            <div class="card">
+                <label class="input__label" for="name">Name*:</label>
+                <input class="input input--text" id="name" name="name" required placeholder="Your name"
+                minlength="3" maxlength="30" pattern="[A-Za-z]+" autocomplete="name">
+            </div>
+
+            <div class="card">
+                <label class="input__label" for="lastname">Last Name*:</label>
+                <input class="input input--text" id="lastname" name="lastname" required placeholder="Your last name"
+                minlength="3" maxlength="30" pattern="[A-Za-z]+" autocomplete="family-name">
+            </div>
+
+            <div class="card">
+                <label class="input__label" for="email">Email*:</label>
+                <input class="input input--email" id="email" name="email" required placeholder="Your email"
+                type="email" autocomplete="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]">
+            </div>
+
+            <div class="card">
+                <label class="input__label" for="phone">Phone*:</label>
+                <input class="input input--phone" id="phone" name="phone" required placeholder="123456789"
+                type="tel" pattern="[0-9]{9}" autocomplete="tel">
+            </div>
+
+            <div class="card">
+                <label class="input__label" for="reason">Reason*:</label>
+                <select class="input input--select" id="reason" name="reason" required>
+                    <option value="">Select a reason</option>
+                    <option value="support">Support</option>
+                    <option value="sales">Sales</option>
+                    <option value="feedback">Feedback</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+
+            <div class="card">
+                <label class="input__label input__label--checkbox">
+                    <input class="input input--checkbox" id="newsletter" name="newsletter" type="checkbox">
+                    Sign up for the newsletter
+                </label>
+            </div>
+
+            <div class="card card--full-width">
+                <label class="input__label" for="comment">Message*:</label>
+                <textarea class="input input--textarea" id="comment" name="comment" required placeholder="Your message" rows="4"></textarea>
+            </div>
+        </div>
+
+        <div class="card card--submit">
+            <button type="submit" class="button button--primary">Submit</button>
+        </div>
+    </form>
+</main>
+
+</body>
+</html>
+
