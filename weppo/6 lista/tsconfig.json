@@ -1,0 +1,9 @@
+{
+    "compilerOptions": {
+    "outDir": "./built",
+    "allowJs": true,
+    "target": "es5"
+    },
+    "include": ["zad2.ts","zad3.ts","zad4B.ts","zad4A.ts"],
+   }
+   

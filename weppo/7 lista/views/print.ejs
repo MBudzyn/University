@@ -1,0 +1,19 @@
+<!-- print.ejs -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Pasek zgłoszenia</title>
+</head>
+<body>
+  <h1>Pasek zgłoszenia</h1>
+  <p>Imię: <%= submission.firstName %></p>
+  <p>Nazwisko: <%= submission.lastName %></p>
+  <p>Zajęcie: <%= submission.occupation %></p>
+  <h2>Zadania:</h2>
+  <ul>
+    <% submission.tasks.forEach(task => { %>
+      <li><strong><%= task.name %>:</strong> <%= task.score %></li>
+    <% }); %>
+  </ul>
+</body>
+</html>

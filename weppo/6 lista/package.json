@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "mongodb": "^6.3.0",
+    "zad4B.ts":"zad4B.ts",
+    "zad4A.ts":"zad4A.ts"
+  }
+}

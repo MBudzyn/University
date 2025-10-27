@@ -1,0 +1,30 @@
+<!-- form.ejs -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Formularz zgłoszenia</title>
+</head>
+<body>
+  <h1>Formularz zgłoszenia</h1>
+  <% if (error) { %>
+    <p><%= error %></p>
+  <% } %>
+  <form action="/submit" method="post">
+    <label for="firstName">Imię:</label>
+    <input type="text" name="firstName" id="firstName" required><br><br>
+    
+    <label for="lastName">Nazwisko:</label>
+    <input type="text" name="lastName" id="lastName" required><br><br>
+    
+    <label for="occupation">Zajęcie:</label>
+    <input type="text" name="occupation" id="occupation" required><br><br>
+    
+    <% for (let i = 1; i <= 10; i++) { %>
+      <label for="task<%= i %>">Zadanie <%= i %>:</label>
+      <input type="number" name="task<%= i %>" id="task<%= i %>"><br><br>
+    <% } %>
+    
+    <input type="submit" value="Zatwierdź">
+  </form>
+</body>
+</html>
