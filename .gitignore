@@ -139,3 +139,12 @@ wektory.txt
 # === Monorepo / Workspaces ===
 packages/**/node_modules/
 apps/**/node_modules/
+
+# === Weppo / JS / TS / Node project ===
+weppo/**/built/
+weppo/**/package-lock.json
+weppo/**/node_modules/
+weppo/**/*.crt
+weppo/**/*.key
+weppo/**/*.csr
+weppo/**/*.txt
