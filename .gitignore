@@ -1,4 +1,4 @@
-# === Systemowe ===
+# === Systemowe / OS ===
 .DS_Store
 Thumbs.db
 ehthumbs.db
@@ -20,6 +20,11 @@ out/
 cmake-build-*/
 *.rider
 *.sln.DotSettings.user
+*.user
+*.suo
+*.userosscache
+*.vs/
+*.dbmdl
 
 # === Node.js / npm / yarn / pnpm ===
 node_modules/
@@ -49,7 +54,7 @@ logs/
 *.pid
 *.seed
 
-# === Testy ===
+# === Testy / Coverage ===
 /coverage
 /.nyc_output
 
@@ -64,13 +69,6 @@ storybook-static/
 # === .NET / C# / Rider / Visual Studio ===
 bin/
 obj/
-*.user
-*.suo
-*.userosscache
-*.sln.docstates
-*.vs/
-*.dbmdl
-*.bak
 *.nupkg
 *.dll
 *.exe
@@ -95,14 +93,43 @@ project.packagespec.json
 *.ref/
 *.refint/
 
-# === Java ===
+# === Java / JVM ===
 *.class
 *.jar
 *.war
 *.ear
 *.ser
 
-# === Misc / temp ===
+# === Python ===
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# === C / C++ Build ===
+*.o
+*.obj
+*.exe
+*.out
+*.a
+*.lib
+*.dll
+*.app
+
+# === Analiza numeryczna / dane tymczasowe ===
+*.zip
+*.tar.gz
+*.rar
+*.jpg
+*.jpeg
+*.png
+*.bmp
+*.gif
+*.tif
+*.tiff
+wektory.txt
+
+# === Misc / Temp / Swap ===
 *.swp
 *.swo
 *.bak
