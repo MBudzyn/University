@@ -21,6 +21,10 @@ desktop.ini
 *.ipr
 out/
 
+# === CLion / CMake IDE ===
+cmake-build-debug/
+cmake-build-release/
+
 # === Node.js / npm / yarn / pnpm ===
 node_modules/
 npm-debug.log*
