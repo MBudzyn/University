@@ -1,0 +1,9 @@
+* tworzenie wlasciwosci ( get i set)
+* tworzenie metod
+* tworzenie klas + dziedziczenie
+* tworzenie konstruktorów 
+* slowa kluczowe ( public private ovveride protected static virtural sealed readonly operator abstract)
+* tworzenie interfejsu
+*
+*
+*
