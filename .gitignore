@@ -12,18 +12,14 @@ desktop.ini
 *.sublime-workspace
 *.sublime-project
 *.code-workspace
-*.sw?
-*.bak
-*.tmp
 
-# === JetBrains IDEs (PyCharm, CLion, IntelliJ, GoLand, etc.) ===
+# === JetBrains IDEs (PyCharm, CLion, Rider, IntelliJ, GoLand, etc.) ===
 *.iws
 *.ipr
 out/
-
-# === CLion / CMake IDE ===
-cmake-build-debug/
-cmake-build-release/
+cmake-build-*/
+*.rider
+*.sln.DotSettings.user
 
 # === Node.js / npm / yarn / pnpm ===
 node_modules/
@@ -64,6 +60,54 @@ logs/
 .svelte-kit/
 storybook-static/
 *.tsbuildinfo
+
+# === .NET / C# / Rider / Visual Studio ===
+bin/
+obj/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.vs/
+*.dbmdl
+*.bak
+*.nupkg
+*.dll
+*.exe
+*.pdb
+*.cache
+*.deps.json
+*.runtimeconfig.json
+*.csproj.nuget.dgspec.json
+*.csproj.nuget.g.props
+*.csproj.nuget.g.targets
+project.assets.json
+project.nuget.cache
+project.packagespec.json
+*.AssemblyInfo.cs
+*.AssemblyReference.cache
+*.CoreCompileInputs.cache
+*.FileListAbsolute.txt
+*.genruntimeconfig.cache
+*.GlobalUsings.g.cs
+*.GeneratedMSBuildEditorConfig.editorconfig
+*.apphost.exe
+*.ref/
+*.refint/
+
+# === Java ===
+*.class
+*.jar
+*.war
+*.ear
+*.ser
+
+# === Misc / temp ===
+*.swp
+*.swo
+*.bak
+*.tmp
+*.pdf
 
 # === Monorepo / Workspaces ===
 packages/**/node_modules/
