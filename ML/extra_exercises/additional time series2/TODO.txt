@@ -1,0 +1,7 @@
+1) DONE
+2) Improving the sliding window for better algorithm performance (fe2 correction)
+3) Normalization of data by features (so that kNN can better calculate distances)
+4) wybór feautreów 
+5) dekompozycja szeregu
+6) lasy losowe 
+7) wykres wariancja , odbieganie od średniej 
