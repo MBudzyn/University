@@ -1,3 +1,63 @@
-/.idea
-/node_modules
-/.vs_code
+# === Systemowe ===
+.DS_Store
+Thumbs.db
+
+# === IDE / Edytory ===
+.idea/
+.vscode/
+*.iml
+
+# === Node.js / npm / yarn / pnpm ===
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# === Build / Output / Dist ===
+dist/
+build/
+out/
+coverage/
+tmp/
+temp/
+
+# === Env / Secret Files ===
+.env
+.env.*
+!.env.example
+
+# === Logi ===
+logs/
+*.log
+*.log.*
+*.out
+*.pid
+*.seed
+
+# === Testy ===
+/coverage
+/.nyc_output
+
+# === React / Next.js / Vite / CRA ===
+.cache/
+.next/
+.vite/
+.svelte-kit/
+storybook-static/
+*.tsbuildinfo
+
+# === Misc ===
+*.swp
+*.swo
+*.bak
+*.tmp
+
+# === OS cache ===
+ehthumbs.db
+Icon?
+desktop.ini
+
+# === Monorepo / Workspaces ===
+packages/**/node_modules/
+apps/**/node_modules/
