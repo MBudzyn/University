@@ -1,0 +1,18 @@
+cztery	4
+trzech	3
+dziesięć	10
+czterdzieści pięć	45
+dwie	2
+trzy	3
+cztery	4
+około tysiąca	tysiąc
+żadnych	zero
+trzydzieści dwa	32
+dziesięć	10
+cztery	4
+sześć	6
+dwadzieścia cztery	24
+sto	100
+dwadzieścia trzy	23
+raz	jeden raz
+osiem	8

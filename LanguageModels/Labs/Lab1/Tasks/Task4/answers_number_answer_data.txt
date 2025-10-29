@@ -1,0 +1,18 @@
+cztery\t2
+trzech\ttrzy
+dwa\t2
+45\tminut
+3,14
+cztery\tWięcej
+1600
+pięć tysię
+pięćdziesią
+1680
+pięćdziesią
+pięćdziesią
+dwa\t2
+pięćdziesią
+1000
+23\t2
+365,
+siedemdzies
