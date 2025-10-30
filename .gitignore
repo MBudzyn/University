@@ -120,9 +120,6 @@ __pycache__/
 *.zip
 *.tar.gz
 *.rar
-*.jpg
-*.jpeg
-*.png
 *.bmp
 *.gif
 *.tif
