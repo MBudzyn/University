@@ -1,25 +1,41 @@
-# LanguageModels - List of Assignments for the Language Models Course
+# 📝 Language Models
 
-This repository contains a set of assignments for the **Language Models** course, aimed at familiarizing students with modern language models, their capabilities, and practical applications in various NLP tasks. The assignments include text classification, question answering, and experiments with zero-shot, one-shot, and few-shot learning techniques.
+This repository contains assignments and lab exercises for the **Language Models** course.  
+It is designed to help students understand modern language models, their capabilities, and practical applications in NLP tasks such as text classification, question answering, and experiments with zero-shot, one-shot, and few-shot learning.
 
-## Repository Structure
+---
+
+## 🚧 In Progress
+
+I am currently taking this course, so the repository is a work in progress.  
+New assignments and experiments are added as I complete labs and practice with the models.
+
+---
+
+## 🧭 Overview
+
+The assignments focus on applying **language models** in practical scenarios, including:
+
+- Text classification  
+- Question answering  
+- Zero-shot, one-shot, and few-shot learning  
+- Practical implementation exercises in Python  
+
+---
+
+## 🗂️ Folder Structure
 
 ```text
 LanguageModels/
-│
-├─ Labs/                          # Main folder with laboratories
-│   ├─ Lab1/                      # Folder with assignments for the first lab
-│   │   ├─ lab_assignment/        # Assignment tasks to be completed
-│   │   ├─ lab_score/             # File with points scored for assignments
-│   │   ├─ Tasks/                 # Completed tasks
-│   │   │   ├─ ...                # Subfolders with files required to solve tasks
-│   │   │   └─ ...
-│   │   ├─ LectureMaterials/      # Lecture materials for this lab
-│   │   │   ├─ txt/               # Text files with materials
-│   │   │   └─ python/            # Python scripts from lectures
-│   │   └─ ...                    # Other supporting files for the lab
-│   ├─ Lab2/                      # Folder with assignments for the second lab
-│   │   └─ similar structure as Lab1
-│   └─ ...                        # Subsequent labs
-│
-└─ .gitignore                      # File specifying ignored files/folders
+├─ Labs/
+│   ├─ Lab1/
+│   │   ├─ lab_assignment/
+│   │   ├─ lab_score/
+│   │   ├─ Tasks/
+│   │   │   └─ ...             # Completed tasks for Lab1
+│   │   └─ LectureMaterials/
+│   │       ├─ txt/
+│   │       └─ python/
+├─ Lab2/
+│   └─ similar structure as Lab1
+└─ ...
