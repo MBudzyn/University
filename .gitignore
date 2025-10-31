@@ -131,7 +131,6 @@ wektory.txt
 *.swo
 *.bak
 *.tmp
-*.pdf
 
 # === Monorepo / Workspaces ===
 packages/**/node_modules/
