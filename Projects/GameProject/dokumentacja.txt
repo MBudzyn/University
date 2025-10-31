@@ -1,0 +1,131 @@
+Zasady gry:
+gracz za pomocą strzałek (prawa, lewa) przesuwa pionek gracza po osi ox starając się łapać jak najwięcej monet
+(złota = wartość 3, srebrna = wartość 2, brązowa = wartość 1) zbierając w ten sposób pkt.
+Dodatkowo musi unikać obiektów bomb które zabierają życia gracza odpowiednio
+(biała 3, czarna 2, czerwona 1). Gra kończy się w momencie utraty wszystkich znaczników życia (9).
+
+
+Wszystkie grafiki wykorzystane w projekcie zostały przeze mnie samodzielnie utworzone.
+Dokonałem tego za pomocą strony internetowej piskelapp.com
+Spis klas utworzonych przeze mnie na potrzeby projektu:
+-Game
+-Scene
+-Scene_manager
+-GameSettings
+-GameScene
+-MenuScene
+-EndScene
+-Monety
+-Buttons
+-Grafika
+-Player
+-Bomby
+-Napisy
+
+przy wypisywaniu metod pomijam oczywistą metodę specjalną __init__ ktorą posiada każda klasa
+Odpowiedzialność klas wraz z ich funkcjami:
+
+Game:
+- klasa odpowiedzialna za odtwarzanie gry posiadająca w tym celu metodę "run".
+
+Scene:
+- klasa abstrakcyjna posiadająca metody:
+- "handle_events": odpowiada za obsługę zdarzeń w danej scenie gry
+- "update": odpowiada za aktualizowanie stanu gry
+- "render": odpowiada za wyświetlanie obiektów w danej scenie gry
+
+SceneManager:
+-klasa odpowiedzialna za obsługę gry posiadająca obiekty klas GameScene, MenuScene ,EndScene ,GameSettings
+-przechowuje informacje o aktualnie wyświetlanej scenie
+
+GameSettings:
+-klasa odpowiedzialna za ustawienia gry i związaną z nimi funkcjonalność
+taką jak zmiana poziomu trudności albo przejście do innej sceny
+klasa posiada metody:
+- "handle_events": odpowiadająca za wykonywanie konkretnych operacji w zależnosci od zachowania gracza takich jak zmiana poziomu trudności czy przejście do innej sceny
+- "zmientrudnosc": odpowiada za zmiane poziomu trudności
+- "mousebuttonlevelcontrol": odpowiada za zachowanie przycisków w zależności od zachowania gracza
+- "update": odpowiada za aktualizacje stanu obiektów
+- "render": odpowiada za wyświetlanie tła oraz pomocniczych obiektów takich jak przyciski
+
+GameScene:
+-klasa odpowiedzialna za gre i związaną z nią funkcjonalność
+klasa posiada metody:
+- "table_filling" : odpowiadająca za wypełnianie tablic przechowujących grafiki monet oraz żyć które są później drukowane na ekranie
+- "collision_spritemonety" : odpowiadająca za akcje wykonywane w momencie kolizji gracza z monetą
+- "collision_spritebomby" : odpowiadająca za akcje wykonywane w momencie kolizji gracza z bombą
+- "game_end" : zwracająca wartość True gdy zostaje spełniony warunek zakończenie rozgrywki i False w przeciwnym wypadku
+- "handle_events" : odpowiadająca za wykonywanie konkretnych operacji w zależności od zachowania gracza takich jak przesunięcie znacznika player
+- "new_game" : odpowiadająca za reset stanu gry do wartości początkowej
+- "update" : odpowiadająca za aktualizowanie stanu obiektow w grze takich jak bomby, monety, gracz
+- "render" : oodpowiadająca za wyświetlanie obiektów w grze takich jak gracz, bomby, życia, tło itp
+
+MenuScene:
+-klasa odpowiedzialna za menu gry i związaną z nim funkcjonalność
+klasa posiada metody:
+- "handle_events": odpowiadająca za wykonywanie konkretnych operacji w zaleznosci od zachowania gracza takie jak przejście do innej sceny
+- "update": odpowiada za aktualizacje stanu obiektów
+- "render": odpowiada za wyświetlanie tła oraz pomocniczych obiektów takich jak przyciski
+
+EndScene:
+-klasa odpowiedzialna za scene końca gry i związaną z nim funkcjonalność
+klasa posiada metody:
+- "handle_events": odpowiadająca za wykonywanie konkretnych operacji w zależnosci od zachowania gracza takicj jak przejście do innej sceny
+- "update": odpowiada za aktualizacje stanu obiektów
+- "render": odpowiada za wyświetlanie tła oraz pomocniczych obiektów takich jak przyciski
+
+Monety:
+-klasa odpowiedzialna za wygląd i zachowanie monet w grze
+klasa posiada metody:
+- "update": odpowiadającą za aktualizacje położenia konkretnej monety
+- "move_up": odpowiadającą za przeniesienie monety "nad ekran" gdy spadnie "zbyt nisko"
+
+Buttons:
+-klasa odpowiedzialna za wygląd i funkcjonalność przycisków w projekcie
+klasa posiada metody:
+- "display": odpowiadającą za wyświetlanie danego przycisku na ekranie
+- "change_to_normal": odpowiadającą za zmianę aktualnej grafiki przycisku na zwykłą
+- "change_to_alt": odpowiadającą za zmianę aktualnej grafiki przycisku na alternatywną
+- "podswietlenie": odpowiadającą za podświetlanie obrazka w zależności od zachowania gracza
+
+Grafika
+-klasa odpowiedzialna za łatwiejsze tworzenie obiektów posiadających grafikę nie deklarująca własnych metod
+
+Player
+-klasa odpowiedzialna za wygląd oraz zachowanie pionka gracza w grze
+klasa posiada metody:
+"player_input": odpowiadającą za zmiane położenia pionka gracza w zależności od zachowania aktualnie grającęj osoby
+"update":odpowiadającą za aktualizacje stanu obiektu gracza
+
+Bomby
+-klasa odpowiedzialna za wygląd i zachowanie bomb w grze
+klasa posiada metodę "update" odpowiadającą za aktualizowanie położenia obiektu "bomba"
+
+Napisy
+-klasa odpowiedzialna za łatwiejsze tworzenie napisów w grze nie posiadająca własnych metod
+
+Cały projekt oprócz plików zawierających poszczególne klasy (jedna klasa jeden plik z rozszerzeniem .py)
+posiada dodatkowo następujące pliki:
+-dokumentacja.txt (to co Pan czyta)
+-globalne.py (zawierający wartości globalne wykorzystywane w grze)
+-main.py (odpowiadający za uruchomienie gry)
+-Pixeltype.ttf (czcionka wykorzystywana w grze)
+-diagram klas.jpg
+
+Oraz jeden folder o nazwie "grafika" (bardzo ważne aby nazwa została zachowana ponieważ może dojść do problemu
+związanego ze ścieżką do poszczególnych grafik) zawierający wszystkie grafiki wykorzystywane w projekcie oraz te
+które w projekcie finalnie zostały zastąpione innymi
+
+Projekt utworzyłem za pomocą biblioteki dostępnej w pytonie (pygame 2.3.0 nie jest to najbardziej aktualna dostępna wersja)
+korzystałem z interpretera: Python 3.9.13
+oraz (SDL 2.24.3)
+korzystając z IDE : PyCharm Professional
+
+Podsumowując cały projekt składa się z 15 plików o rozszerzenieu .py (klasy + main + globalne)
+Jednego o rozszerzeniu .txt (dokumentacja)
+Jednego o  rozszerzeniu .ttf (czcionka)
+Aktualny diagram klas w formacie .jpg
+Oraz folderu z grafikami o rozszerzeniu .png
+
+
+
