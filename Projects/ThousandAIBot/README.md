@@ -1,40 +1,59 @@
-# Bot for a game "Thousand" utilizing the (MCTS) algorithm
-## Description 
-The "Thousand bot" was my final project for the AI course. 
-The goal was to develop a bot to play the game 'Thousand' using the Monte Carlo Tree Search (MCTS) algorithm.
-I decided to divide the problem into two main parts: bidding and playing phases. The first phase, bidding, is based on probabilities.
-The approach I used involved calculating all possible hands, counting winning tricks, and points for melds.
-Then, I parsed the sum of these values into a dictionary and calculated the probabilities of having a hand that would surely give us a certain number of points.
-Based on the generated probabilities, the cards in meld colors, and bias points (a global variable), the bot decides whether to play or pass.
-The implementation of the second phase, playing, was based on the MCTS algorithm, which runs only when no card is a guaranteed winner.
-The FullGame.py script simulates a game with random players and prints data describing the game to the standard output.
-## Dependencies
+# 🎮 ThousandBot (MCTS AI)
 
-This project requires the following external libraries:
+This repository contains my final project for the **Artificial Intelligence** course.  
+The goal was to develop a bot capable of playing the card game **"Thousand"** using the **Monte Carlo Tree Search (MCTS)** algorithm.  
 
-- `typeguard`: For runtime type checking.
-- `random`: For generating random numbers and making random choices.
-- `copy`: For creating deep copies of objects.
-- `logging`: For logging messages and debugging information.
-- `pygame`: For creating graphical interfaces and handling game mechanics. *(currently in progress)*
-- `math`: For mathematical functions and calculations.
-- `concurrent.futures`: For concurrent execution of code using threads or processes.
+The bot’s logic is divided into two main phases: **bidding** and **playing**.  
+
+- **Bidding phase**: Based on probabilities. All possible hands are evaluated, counting winning tricks and points for melds. These values are aggregated to calculate the probability of achieving certain points, guiding the decision to play or pass.  
+- **Playing phase**: Implemented using the MCTS algorithm. This runs only when no card is guaranteed to win a trick.  
+
+The `FullGame.py` script simulates a full game with random players and prints detailed game data to the console.
+
+---
+
+## ⚙️ Dependencies
+
+This project requires the following Python libraries:
+
+- `typeguard` — runtime type checking  
+- `pygame` — graphical interface and game mechanics *(currently in progress)*  
+- `random`, `copy`, `logging`, `math`, `concurrent.futures` — part of the Python standard library
 
 ### Installation
 
-You can install these dependencies using the following command:
+Install external dependencies via:
 
-    pip install typeguard pygame
+```bash
+pip install typeguard pygame
+```
 
-Note: The `random`, `copy`, `logging`, `math`, and `concurrent.futures` libraries are part of the Python standard library and do not require separate installation.
-## Usage
+### 🚀 Usage
 
-To run the Thousand bot, follow these steps:
+To run the **Thousand Bot**:
 
-1. Ensure you have Python 3.9 installed on your system.
-2. Install the required dependencies
-3. Run the FullGame.py script to simulate a game:
+1. Ensure **Python 3.9** or higher is installed.
+2. Install dependencies as shown above.
+3. Run the simulation:
+4. python FullGame.py
 
-    ```bash
-    python FullGame.py
-    ```
+```bash
+
+## 🗂️ Folder Structure
+
+```text
+ThousandBot/
+├─ FullGame.py              # Main simulation script
+├─ Auction.py               # Bidding logic
+├─ Bot.py                   # Bot logic and decision making
+├─ Card.py                  # Card representation and utilities
+├─ CardsManipulator.py      # Helper functions to manipulate card sets
+├─ Deck.py                  # Deck management
+├─ Game.py                  # Game rules and flow
+├─ GlobalVariables.py       # Global constants and variables
+├─ MonteCarlo.py            # Monte Carlo Tree Search implementation
+├─ Player.py                # Player class
+├─ Thousand.py              # Game engine
+├─ graphics/                # Card and board images
+│   └─ *.png
+└─ README.md
