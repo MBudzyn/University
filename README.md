@@ -71,7 +71,7 @@ Each subject folder may contain:
 - 📘 `README.md` files – topic summaries and task overviews  
 - 🧾 `listaX` directories – individual assignment lists  
 - 🧪 `lab_sessions`, `tasks`, or `projects` – categorized coursework or experiments
-- 
+ 
 ---
 
 ## 💡 Future Plans
